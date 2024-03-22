@@ -1,0 +1,10 @@
+seed: 424
+use_wandb: false
+input_data_dir: datasets/external/ai_mix_v16
+train_params:
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  num_train_epochs: 1
+  gradient_accumulation_steps: 4
+outputs:
+  model_dir: models/r_detect_mix_v16
