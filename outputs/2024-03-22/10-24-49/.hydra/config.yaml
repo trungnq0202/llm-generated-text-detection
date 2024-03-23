@@ -1,0 +1,6 @@
+seed: 424
+use_wandb: false
+train_params:
+  gradient_accumulation_steps: 4
+outputs:
+  model_dir: models/r_detect_mix_v16
