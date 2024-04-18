@@ -159,13 +159,11 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-data/original/*.csv
-data/original/*.zip
-data/DAIGT_V2/*.zip
-data/DAIGT_V2/*.csv
-data/llm-7-prompts/*.csv
-data/llm-7-prompts/*.zip
+data/
+_data/
 
-first_place_reproduction/datasets
+first_place_reproduction/
 
 resources
+
+notebooks/*.csv
