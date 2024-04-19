@@ -41,7 +41,7 @@ def run_evaluation(accelerator, model, valid_dl):
         batch_losses = accelerator.gather_for_metrics(loss)
         batch_losses = batch_losses.cpu().numpy().tolist()
 
-        all_losses.extend(batch_losses)
+        all_losses.append(batch_losses)
         progress_bar.update(1)
     progress_bar.close()
 

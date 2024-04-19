@@ -3,7 +3,7 @@ use_wandb: false
 input_data_path: data/persuade_2/persuade_2.0_human_scores_demo_id_github.csv
 
 model:
-  backbone_path: gpt2
+  backbone_path:  ahxt/LiteLlama-460M-1T # mistralai/Mistral-7B-v0.1
   max_length: 1024
   num_labels: 1
   
@@ -14,9 +14,15 @@ model:
 
   lora:
     target_modules:
-      - c_attn
-    r: 64
-    lora_alpha: 64
+      - q_proj
+      - k_proj
+      - v_proj
+      - o_proj
+      - gate_proj
+      - up_proj
+      - down_proj
+    r: 16
+    lora_alpha: 32
     lora_dropout: 0.1
     modules_to_save:
       - lm_head
@@ -24,7 +30,7 @@ model:
 train_params:
   per_device_train_batch_size: 1 # 512 # 512
   per_device_eval_batch_size: 1
-  num_train_epochs: 1 # 16
+  num_train_epochs: 2 # 16
   gradient_accumulation_steps: 4
 
   warmup_pct: 0.1
@@ -39,10 +45,10 @@ optimizer:
   max_grad_norm: 0.3
 
 outputs:
-  model_dir: ../models/r_clm_gpt2
+  model_dir: models/r_clm_lite_llama
 
 wandb:
   project: detect-ai-a1
   run_name: exp006-r-clm
   tags:
-    - distilgpt2
+    - mistral
