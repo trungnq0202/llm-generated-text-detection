@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=essay_generation_gpt2
+#SBATCH --job-name=essay_gen_mistral_7b
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:a100:1
 #SBATCH --partition=gpu
@@ -8,8 +8,8 @@
 #SBATCH --mem=64GB
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=12
-#SBATCH --output=jobs_logs/text_gen_gpt2.%j.out
-#SBATCH --error=jobs_logs/text_gen_gpt2.%j.err
+#SBATCH --output=jobs_logs/text_gen_mistral_7b.%j.out
+#SBATCH --error=jobs_logs/text_gen_mistral_7b.%j.err
 
 ######################
 ### Set enviroment ###
@@ -23,7 +23,7 @@ cd llm-generated-text-detection
 
 export SCRIPT=src/generate.py 
 export SCRIPT_ARGS=" \
-    --config_path src/config/generation/text_generation_gpt2.yaml \
+    --config_path src/config/generation/text_generation_mistral_7b.yaml \
     "
 
 accelerate launch $SCRIPT $SCRIPT_ARGS

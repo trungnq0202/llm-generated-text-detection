@@ -1,10 +1,9 @@
 input_data_path: data/persuade_2/persuade_2.0_human_scores_demo_id_github.csv
 base_model_path: distilgpt2
 adapter_path: models/sft_gpt2/last
-max_num_tokens: 1296
-# output_dir: data/scaling/llama2_13b/v3
+max_num_tokens: 768
 output_dir: data/scaling/gpt2
-n_examples: 256
+n_examples: 3500
 n_gen_per_prompt: 1
 
 
