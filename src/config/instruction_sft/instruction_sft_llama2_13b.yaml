@@ -3,7 +3,7 @@ use_wandb: false
 input_data_path: data/persuade_2/persuade_2.0_human_scores_demo_id_github.csv
 
 model:
-  backbone_path: gpt2
+  backbone_path: KoboldAI/LLaMA2-13B-Tiefighter
   max_length: 1024
   num_labels: 1
   
@@ -14,9 +14,15 @@ model:
 
   lora:
     target_modules:
-      - c_attn
-    r: 64
-    lora_alpha: 64
+      - q_proj
+      - k_proj
+      - v_proj
+      - o_proj
+      - gate_proj
+      - up_proj
+      - down_proj
+    r: 16
+    lora_alpha: 32
     lora_dropout: 0.1
     modules_to_save:
       - lm_head
@@ -39,4 +45,4 @@ optimizer:
   max_grad_norm: 0.3
 
 outputs:
-  model_dir: models/instruction_sft_gpt2
+  model_dir: models/instruction_sft_llama2_13b

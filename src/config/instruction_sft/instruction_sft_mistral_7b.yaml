@@ -3,7 +3,7 @@ use_wandb: false
 input_data_path: data/persuade_2/persuade_2.0_human_scores_demo_id_github.csv
 
 model:
-  backbone_path:  ahxt/LiteLlama-460M-1T # mistralai/Mistral-7B-v0.1
+  backbone_path: mistralai/Mistral-7B-v0.1
   max_length: 1024
   num_labels: 1
   
@@ -45,10 +45,4 @@ optimizer:
   max_grad_norm: 0.3
 
 outputs:
-  model_dir: models/r_clm_lite_llama
-
-wandb:
-  project: detect-ai-a1
-  run_name: exp006-r-clm
-  tags:
-    - mistral
+  model_dir: models/instruction_sft_mistral_7b

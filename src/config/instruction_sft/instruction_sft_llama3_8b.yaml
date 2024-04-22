@@ -45,10 +45,4 @@ optimizer:
   max_grad_norm: 0.3
 
 outputs:
-  model_dir: models/sft_llama3_8b
-
-wandb:
-  project: detect-ai-a1
-  run_name: exp006-r-clm
-  tags:
-    - falcon
+  model_dir: models/instruction_sft_llama3_8b

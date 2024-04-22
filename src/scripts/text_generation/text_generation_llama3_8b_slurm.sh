@@ -23,7 +23,7 @@ cd llm-generated-text-detection
 
 export SCRIPT=src/generate.py 
 export SCRIPT_ARGS=" \
-    --config_path src/config/generation/text_generation_llama3_8b.yaml \
+    --config_path src/config/text_generation/text_generation_llama3_8b.yaml \
     "
 
 accelerate launch $SCRIPT $SCRIPT_ARGS

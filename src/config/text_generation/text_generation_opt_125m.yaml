@@ -1,6 +1,6 @@
 input_data_path: data/persuade_2/persuade_2.0_human_scores_demo_id_github.csv
 base_model_path: facebook/opt-125m
-adapter_path: models/sft_opt_125m/last
+adapter_path: models/instruction_sft_opt_125m/last
 max_num_tokens: 1024
 output_dir: data/scaling/opt_125m
 n_examples: 1024

@@ -162,6 +162,7 @@ cython_debug/
 data/
 _data/
 models/
+!src/models
 
 first_place_reproduction/
 

@@ -20,9 +20,9 @@ cd llm-generated-text-detection
 # export GPUS_PER_NODE=4
 ######################
 
-export SCRIPT=src/instruct.py 
+export SCRIPT=src/instruction_sft.py 
 export SCRIPT_ARGS=" \
-    --config-name instruct_sft_llama3_8b \
+    --config-name instruction_sft_llama2_13b \
     use_wandb=false
     "
 

@@ -1,6 +1,6 @@
 input_data_path: data/persuade_2/persuade_2.0_human_scores_demo_id_github.csv
 base_model_path: mistralai/Mistral-7B-v0.1
-adapter_path: models/sft_mistral_7b/last
+adapter_path: models/instruction_sft_mistral_7b/last
 max_num_tokens: 1024
 output_dir: data/scaling/mistral_7b
 n_examples: 256
