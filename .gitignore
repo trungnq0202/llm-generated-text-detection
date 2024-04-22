@@ -168,3 +168,4 @@ first_place_reproduction/
 resources
 
 notebooks/*.csv
+outputs/

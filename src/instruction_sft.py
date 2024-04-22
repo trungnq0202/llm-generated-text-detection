@@ -20,9 +20,9 @@ from transformers import (AutoModelForCausalLM, BitsAndBytesConfig,
                           get_cosine_schedule_with_warmup)
 
 from data_loader import AiDataset, AiCollator
-from data_loader.data_collator import show_batch
+from data_loader.instruction_sft import show_batch
 from optimizer import get_optimizer
-from utils.train_utils import AverageMeter, get_lr, as_minutes
+from utils import AverageMeter, get_lr, as_minutes
 
 logger = get_logger(__name__)
 
@@ -51,7 +51,7 @@ def run_evaluation(accelerator, model, valid_dl):
 
     return eval_dict
 
-@hydra.main(version_base=None, config_path="config/sft", config_name="instruction_sft")
+@hydra.main(version_base=None, config_path="config/instruction_sft", config_name="instruction_sft")
 def train_instruction_sft(cfg):
     # ------- Accelerator ---------------------------------------------------------------#
     accelerator = Accelerator(
