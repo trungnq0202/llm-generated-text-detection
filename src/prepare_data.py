@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from utils import preprocess_essay
 
-def generate_random_string():
+def generate_random_string(text):
     chars = string.ascii_lowercase + string.digits
     return 'e_' + ''.join(random.choice(chars) for _ in range(8))
 
@@ -16,7 +16,8 @@ def prepare_DAIGT_V2(dir_data: str) -> pd.DataFrame:
     dir_daigt_v2 = os.path.join(dir_data, 'DAIGT_V2/train_v2_drcat_02.csv')
     df_daigt_v2 = pd.read_csv(dir_daigt_v2).rename(columns={'label': 'generated'})
     df_daigt_v2.drop(columns=["RDizzl3_seven"], inplace=True)
-    df_daigt_v2 = df_daigt_v2[["text", "source", "generated"]]
+    df_daigt_v2["id"] = df_daigt_v2["text"].apply(generate_random_string)
+    df_daigt_v2 = df_daigt_v2[["id", "text", "source", "generated"]]
     df_daigt_v2.drop_duplicates(subset=["text"], inplace=True)
     return df_daigt_v2
 
@@ -39,7 +40,8 @@ def prepare_generated_data(dir_data: str) -> pd.DataFrame:
     
     df_generated.rename(columns={"responses": "text"}, inplace=True)
     df_generated["generated"] = 1
-    df_generated = df_generated[["text", "source", "generated"]]
+    df_generated["id"] = df_generated["text"].apply(generate_random_string)
+    df_generated = df_generated[["id", "text", "source", "generated"]]
     df_generated.drop_duplicates(subset=["text"], inplace=True)
     return df_generated
 
@@ -77,6 +79,15 @@ def prepare_data(dir_data: str, dir_output: str):
     df_train['text'] = df_train['text'].apply(preprocess_essay)
     df_test['text'] = df_test['text'].apply(preprocess_essay)
     
+    print("Checking for duplicates...")
+    print(df_daigt_v2_train.duplicated().sum())
+    print(df_train.duplicated().sum())
+    print(df_test.duplicated().sum())
+
+    print(df_daigt_v2_train.duplicated(subset=["id"]).sum())
+    print(df_train.duplicated(subset=["id"]).sum())
+    print(df_test.duplicated(subset=["id"]).sum())
+
     print("Saving files...")
     df_daigt_v2_train.to_csv(os.path.join(dir_output, 'train_essays_v1.csv'), index=False)
     df_test.to_csv(os.path.join(dir_output, 'test_essays.csv'), index=False)
