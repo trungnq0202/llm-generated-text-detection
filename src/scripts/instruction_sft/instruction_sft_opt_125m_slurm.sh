@@ -14,8 +14,9 @@
 ######################
 ### Set enviroment ###
 ######################
-module load anaconda3/2022.05 cuda/12.1
-# conda activate llm-detect
+module load cuda/12.1
+eval "$(conda shell.bash hook)"
+conda activate llm-detect
 cd llm-generated-text-detection
 # export GPUS_PER_NODE=4
 ######################
