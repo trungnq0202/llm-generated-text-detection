@@ -1,4 +1,0 @@
-seed: 424
-use_wandb: false
-train_params:
-  gradient_accumulation_steps: 4

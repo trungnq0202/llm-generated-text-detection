@@ -19,7 +19,7 @@ from peft import LoraConfig, TaskType, get_peft_model
 from transformers import (AutoModelForCausalLM, BitsAndBytesConfig,
                           get_cosine_schedule_with_warmup)
 
-from data_loader import AiDataset, AiCollator
+from data_loader.instruction_sft import AiDataset, AiCollator
 from data_loader.instruction_sft import show_batch
 from optimizer import get_optimizer
 from utils import AverageMeter, get_lr, as_minutes
@@ -93,7 +93,7 @@ def train_instruction_sft(cfg):
 
     # load query dataframe ---
     essay_df = pd.read_csv(cfg.input_data_path).rename(columns={"full_text": "text"})
-    essay_df = essay_df[~essay_df['text'].isna()].copy()
+    essay_df = essay_df[~essay_df['text']   .isna()].copy()
     essay_df = essay_df.reset_index(drop=True)
 
     # ------- Data Split ----------------------------------------------------------------#
@@ -356,21 +356,5 @@ def train_instruction_sft(cfg):
 
 if __name__ == "__main__":
     train_instruction_sft()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

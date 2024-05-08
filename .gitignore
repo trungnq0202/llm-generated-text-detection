@@ -170,3 +170,4 @@ resources
 
 notebooks/*.csv
 outputs/
+src/outputs
