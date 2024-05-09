@@ -17,4 +17,8 @@ kaggle datasets download -d thedrcat/daigt-v2-train-dataset
 unzip daigt-v2-train-dataset.zip -d ./DAIGT_V2
 rm daigt-v2-train-dataset.zip
 
+kaggle datasets download -d trungngoq/daigt-v2-augmented
+unzip daigt-v2-augmented.zip -d ./final
+rm daigt-v2-augmented.zip
+
 cd $hdir
