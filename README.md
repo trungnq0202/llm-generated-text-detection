@@ -32,7 +32,10 @@ Our final models includes:
 - (Q)LoRA fine-tuning of Mistral-7B
 - An ensemble of 4 classfiers including MultinomialNB, SGD, LGBM, and CatBoost, using TFIDF and NLP characteristics as features.
 
-### Performance on Kaggle public & private test
+### Performance on Kaggle public & private test (Ensemble classifier)
+
+- Evaluation metric: **ROC AUC score**
+
 ![Kaggle performance](imgs/kaggle_performance.png)
 
 ## Section 1: Setup
@@ -99,11 +102,11 @@ We fine-tuned 6 LLMs using (Q)LoRA on the [PERSUADE](https://www.kaggle.com/data
 ```bash
 bash src/instruction_sft/instruction_sft_falcon_7b_slurm.sh
 
-bash src/instruction_sft/instruction_gpt2_slurm.sh
+bash src/instruction_sft/instruction_sft_gpt2_slurm.sh
 
-bash src/instruction_sft/instruction_llama2_13b_slurm.sh
+bash src/instruction_sft/instruction_sft_llama2_13b_slurm.sh
 
-bash src/instruction_sft/instruction_llama3_8b_slurm.sh
+bash src/instruction_sft/instruction_sft_llama3_8b_slurm.sh
 
 bash src/instruction_sft/instruction_sft_mistral_7b_slurm.sh
 
@@ -117,11 +120,11 @@ Those following scripts are used to generate essays using the 6 fine-tuned LLMs 
 ```bash
 bash src/text_generation/text_generation_falcon_7b_slurm.sh
 
-bash src/text_generation/instruction_gpt2_slurm.sh
+bash src/text_generation/text_generation_gpt2_slurm.sh
 
-bash src/text_generation/instruction_llama2_13b_slurm.sh
+bash src/text_generation/text_generation_llama2_13b_slurm.sh
 
-bash src/text_generation/instruction_llama3_8b_slurm.sh
+bash src/text_generation/text_generation_llama3_8b_slurm.sh
 
 bash src/text_generation/text_generation_mistral_7b_slurm.sh
 
@@ -154,6 +157,11 @@ For (Q)LoRA fine-tuning Mistral-7B as the classifier, run the following:
 ```
 bash src/detection_sft/detection_sft_mistral_7b_slurm.sh
 ```
+
+**Inference notebooks**
+* [Ensemble classifier](https://www.kaggle.com/code/trungngoq/tfidf-nlp-characteristics-features-ensemble)
+* [Fine-tuned Mistral-7B classifier](https://www.kaggle.com/code/trungngoq/inference-mistral-finetuning)
+
 
 
 
